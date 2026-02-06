@@ -17,6 +17,7 @@ El enrutado se efectúa con [React Router](https://reactrouter.com/)
 En este proyecto genera una Single Page Application y se analizan los siguientes puntos:
 - ShadcnUI y Tailwind CSS
 - Estructuración del proyecto y segmentación de código
+- Layout
 - LazyLoad
 - Estructura de una paginación
 - TanStack Query
