@@ -13,10 +13,10 @@ export const HeroStats = () => {
         <div className="text-2xl font-bold">16</div>
         <div className="flex gap-1 mt-2">
           <Badge variant="secondary" className="text-xs">
-            12 Heroes
+            12 Héroes
           </Badge>
           <Badge variant="destructive" className="text-xs">
-            2 Villains
+            2 Villanos
           </Badge>
         </div>
       </HeroStatCard>
@@ -26,7 +26,7 @@ export const HeroStats = () => {
         icon={<Heart className="h-4 w-4 text-muted-foreground" />}
       >
         <div className="text-2xl font-bold text-red-600">3</div>
-        <p className="text-xs text-muted-foreground">18.8% of total</p>
+        <p className="text-xs text-muted-foreground">18.8% del total</p>
       </HeroStatCard>
 
       <HeroStatCard
