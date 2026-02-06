@@ -4,9 +4,13 @@ SPA basada en el proyecto HeroesApp del curso de "React: De cero a experto" de [
 
 Se trata de un proyecto React creado utilizando Vite con TypeScript + SWC.
 
+El diseño de la aplicación se realizó con [Bolt](https://bolt.new/) y [V0](https://v0.app/)
+
 Usa [Tailwind CSS](https://tailwindcss.com/) como framework CSS.
 
 El diseño de los componentes se realiza con [shadcn/ui](https://ui.shadcn.com/).
+
+El enrutado se efectúa con [React Router](https://reactrouter.com/)
 
 ## Aspectos analizados
 
@@ -47,4 +51,9 @@ Los avisos sobre las reglas en Visual Studio Code se pueden eliminar con la exte
 Para añadir nuevos componentes Shadcn-ui al proyecto
 ```bash
 npx shadcn@latest add
+```
+
+Para instalar React Router en modo data:
+```bash
+npm i react-router
 ```
