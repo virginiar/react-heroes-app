@@ -1,13 +1,13 @@
-import {
-  Heart,
-} from "lucide-react";
+import { useState } from "react";
+import { Heart } from "lucide-react";
+
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 import { CustomJumbotron } from "@/components/custom/CustomJumbotron";
 import { HeroStats } from "@/heroes/components/HeroStats";
 import { HeroGrid } from "@/heroes/components/HeroGrid";
-import { useState } from "react";
 import { CustomPagination } from "@/components/custom/CustomPagination";
+import { CustomBreadcrumb } from "@/components/custom/CustomBreadcrumb";
 
 export const HomePage = () => {
   const [activeTab, setActiveTab] = useState<
@@ -22,6 +22,8 @@ export const HomePage = () => {
           title="Universo de SuperHéroes"
           description="Descubre, explora y administra super héroes y villanos"
         />
+
+        <CustomBreadcrumb currentPage="SuperHéroes" />
 
         {/* Stats Dashboard */}
         <HeroStats />
@@ -73,7 +75,7 @@ export const HomePage = () => {
         </Tabs>
 
         {/* Pagination */}
-        <CustomPagination totalPages={8}/>
+        <CustomPagination totalPages={8} />
       </>
     </>
   );
