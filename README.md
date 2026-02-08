@@ -10,7 +10,9 @@ Usa [Tailwind CSS](https://tailwindcss.com/) como framework CSS.
 
 El diseño de los componentes se realiza con [shadcn/ui](https://ui.shadcn.com/).
 
-El enrutado se efectúa con [React Router](https://reactrouter.com/)
+El enrutado se efectúa con [React Router](https://reactrouter.com/).
+
+La obtención de datos HTTP del backend se realiza con [Axios](https://axios-http.com/es/docs/intro)
 
 ## Aspectos analizados
 
@@ -36,6 +38,8 @@ En este proyecto genera una Single Page Application y se analizan los siguientes
 
 Descargar las dependencias con `npm install`.
 
+Crear archivo `.env` con las variables de entorno indicadas en `.env.template`.
+
 Iniciar la aplicación con `npm run dev`.
 
 ## Instalaciones de paquetes necesarios
@@ -57,4 +61,9 @@ npx shadcn@latest add
 Para instalar React Router en modo data:
 ```bash
 npm i react-router
+```
+
+Para instalar Axios:
+```bash
+npm install axios
 ```
