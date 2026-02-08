@@ -1,6 +1,6 @@
 # React Heroes App
 
-SPA basada en el proyecto HeroesApp del curso de "React: De cero a experto" de [DevTalles](https://cursos.devtalles.com/) en Udemy.
+SPA (Single Page Application) basada en el proyecto HeroesApp del curso de "React: De cero a experto" de [DevTalles](https://cursos.devtalles.com/) en Udemy.
 
 Se trata de un proyecto React creado utilizando Vite con TypeScript + SWC.
 
@@ -12,7 +12,9 @@ El diseño de los componentes se realiza con [shadcn/ui](https://ui.shadcn.com/)
 
 El enrutado se efectúa con [React Router](https://reactrouter.com/).
 
-La obtención de datos HTTP del backend se realiza con [Axios](https://axios-http.com/es/docs/intro)
+La obtención de datos HTTP del backend se realiza con [Axios](https://axios-http.com/es/docs/intro).
+
+Como gestor de estado asíncrono se utiliza [TanStack Query](https://tanstack.com/query/latest).
 
 ## Aspectos analizados
 
@@ -66,4 +68,10 @@ npm i react-router
 Para instalar Axios:
 ```bash
 npm install axios
+```
+
+Para instalar TanStack Query:
+```bash
+npm i @tanstack/react-query
+npm i -D @tanstack/eslint-plugin-query
 ```
