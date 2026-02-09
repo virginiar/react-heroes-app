@@ -11,6 +11,7 @@ import { CustomBreadcrumb } from "@/components/custom/CustomBreadcrumb";
 import { HeroStats } from "@/heroes/components/HeroStats";
 import { HeroGrid } from "@/heroes/components/HeroGrid";
 import { getHeroesByPageAction } from "@/heroes/actions/get-heroes-by-page.action";
+import { useHeroSummary } from "@/heroes/hooks/useHeroSummary";
 
 export const HomePage = () => {
   /* const [activeTab, setActiveTab] = useState<
@@ -41,6 +42,8 @@ export const HomePage = () => {
   });
   // console.log(data);
 
+  const { data: summary } = useHeroSummary();
+
   return (
     <>
       <>
@@ -67,7 +70,7 @@ export const HomePage = () => {
                 })
               }
             >
-              All Characters (16)
+              Todos los personajes ({summary?.totalHeroes})
             </TabsTrigger>
             <TabsTrigger
               value="favorites"
@@ -79,6 +82,7 @@ export const HomePage = () => {
                 })
               }
             >
+              {/* TODO: tenemos que calcular este valor */}
               <Heart className="h-4 w-4" />
               Favorites (3)
             </TabsTrigger>
@@ -91,7 +95,7 @@ export const HomePage = () => {
                 })
               }
             >
-              Heroes (12)
+              Héroes ({summary?.heroCount})
             </TabsTrigger>
             <TabsTrigger
               value="villains"
@@ -102,7 +106,7 @@ export const HomePage = () => {
                 })
               }
             >
-              Villains (2)
+              Villanos ({summary?.villainCount})
             </TabsTrigger>
           </TabsList>
           <TabsContent value="all">
