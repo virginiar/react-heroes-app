@@ -1,8 +1,25 @@
+import { useSearchParams } from "react-router";
+import { useRef } from "react";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, Filter, SortAsc, Grid, Plus } from "lucide-react";
 
 export const SearchControls = () => {
+  // const [query, setQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      const value = inputRef.current?.value ?? "";
+      setSearchParams((prev) => {
+        prev.set("name", value);
+        return prev;
+      });
+    }
+  };
+
   return (
     <>
       {/* Controls */}
@@ -13,6 +30,9 @@ export const SearchControls = () => {
           <Input
             placeholder="Buscar héroes, villanos, poderes, equipos..."
             className="pl-12 h-12 text-lg bg-white"
+            ref={inputRef}
+            onKeyDown={handleKeyDown}
+            defaultValue={searchParams.get("name") ?? ""}
           />
         </div>
 
@@ -86,4 +106,4 @@ export const SearchControls = () => {
       </div>
     </>
   );
-}
+};
