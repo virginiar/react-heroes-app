@@ -129,7 +129,7 @@ export const HeroGridCard = ({ hero }: Props) => {
           <div className="space-y-1">
             <div className="flex items-center gap-1">
               <Shield className="h-3 w-3 text-purple-500" />
-              <span className="text-xs font-medium">Durabilidad</span>
+              <span className="text-xs font-medium">Resistencia</span>
             </div>
             <Progress
               value={hero.durability * 10}
