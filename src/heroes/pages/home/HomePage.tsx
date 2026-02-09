@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { use, useMemo } from "react";
 import { useSearchParams } from "react-router";
 import { Heart } from "lucide-react";
 
@@ -11,6 +11,7 @@ import { HeroStats } from "@/heroes/components/HeroStats";
 import { HeroGrid } from "@/heroes/components/HeroGrid";
 import { useHeroSummary } from "@/heroes/hooks/useHeroSummary";
 import { usePaginatedHero } from "@/heroes/hooks/usePaginatedHero";
+import { FavoriteHeroContext } from "@/heroes/context/FavoriteHeroContext";
 
 export const HomePage = () => {
   /* const [activeTab, setActiveTab] = useState<
@@ -18,11 +19,12 @@ export const HomePage = () => {
   >("all"); */
 
   const [searchParams, setSearchParams] = useSearchParams();
+  const { favoriteCount, favorites } = use(FavoriteHeroContext);
 
   const activeTab = searchParams.get("tab") ?? "all";
   const page = searchParams.get("page") ?? "1";
   const limit = searchParams.get("limit") ?? "6";
-  const category = searchParams.get('category') ?? 'all';
+  const category = searchParams.get("category") ?? "all";
 
   const selectedTab = useMemo(() => {
     const validTabs = ["all", "favorites", "heroes", "villains"];
@@ -85,9 +87,8 @@ export const HomePage = () => {
                 })
               }
             >
-              {/* TODO: tenemos que calcular este valor */}
               <Heart className="h-4 w-4" />
-              Favorites (3)
+              Favoritos ({favoriteCount})
             </TabsTrigger>
             <TabsTrigger
               value="heroes"
@@ -124,7 +125,7 @@ export const HomePage = () => {
           <TabsContent value="favorites">
             {/* Mostrar los personajes favoritos*/}
             <h1>¡Favoritos!</h1>
-            <HeroGrid heroes={heroesResponse?.heroes ?? []} />
+            <HeroGrid heroes={favorites} />
           </TabsContent>
           <TabsContent value="heroes">
             {/* Mostrar todos los héroes */}
@@ -139,7 +140,9 @@ export const HomePage = () => {
         </Tabs>
 
         {/* Pagination */}
-        <CustomPagination totalPages={heroesResponse?.pages ?? 1} />
+        {selectedTab !== "favorites" && (
+          <CustomPagination totalPages={heroesResponse?.pages ?? 1} />
+        )}
       </>
     </>
   );

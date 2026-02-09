@@ -25,7 +25,7 @@ export const HeroPage = () => {
   }
 
   if (!superheroData) {
-    return <h3>Loading...</h3>;
+    return <h3>Cargando...</h3>;
   }
 
   const totalPower =
