@@ -16,6 +16,8 @@ La obtención de datos HTTP del backend se realiza con [Axios](https://axios-htt
 
 Como gestor de estado asíncrono se utiliza [TanStack Query](https://tanstack.com/query/latest).
 
+Las pruebas se realizan con [Vitest](https://vitest.dev/guide/) y [React Testing Library](https://testing-library.com/docs/react-testing-library/intro).
+
 ## Aspectos analizados
 
 En este proyecto genera una Single Page Application y se analizan los siguientes puntos:
@@ -43,6 +45,14 @@ Descargar las dependencias con `npm install`.
 Crear archivo `.env` con las variables de entorno indicadas en `.env.template`.
 
 Iniciar la aplicación con `npm run dev`.
+
+### Pruebas
+
+Ejecutar las pruebas con `npm run test`.
+
+Visualizar las pruebas en el navegador con `npm run test:ui`.
+
+Efectuar el informe de cobertura con `npm run coverage`.
 
 ## Instalaciones de paquetes necesarios
 
@@ -74,4 +84,40 @@ Para instalar TanStack Query:
 ```bash
 npm i @tanstack/react-query
 npm i -D @tanstack/eslint-plugin-query
+```
+
+### Dependencias para pruebas
+
+Vitest se instala con el comando:
+ ```bash
+npm install --save-dev vitest jsdom
+```
+
+React Testing Library se instala con:
+```bash
+npm install --save-dev @testing-library/react @testing-library/dom
+```
+
+En el archivo `package.json`debe incluirse:
+```json
+"scripts": {
+  "test": "vitest",
+  "test:ui": "vitest --ui",
+  "coverage": "vitest run --coverage"
+}
+```
+
+También hay que configurar el archivo `vite.config.ts`:
+```ts
+import { defineConfig } from 'vitest/config';
+import react from '@vitejs/plugin-react-swc';
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    environment: 'jsdom',
+    globals: true,
+  },
+});
 ```
