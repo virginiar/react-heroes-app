@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import { Heart, Eye, Zap, Brain, Gauge, Shield } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
@@ -11,13 +12,20 @@ interface Props {
 }
 
 export const HeroGridCard = ({ hero }: Props) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/heroes/${hero.slug}`);
+  };
+
   return (
     <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-linear-to-br from-white to-gray-50">
-      <div className="relative h-64 overflow-hidden">
+      <div className="relative h-64">
         <img
           src={hero.image}
           alt={hero.name}
-          className="object-cover transition-all duration-500 group-hover:scale-110"
+          className="object-cover transition-all duration-500 group-hover:scale-110 absolute -top-7.5 w-full h-102.5"
+          onClick={handleClick}
         />
 
         {/* Status indicator */}
@@ -65,14 +73,14 @@ export const HeroGridCard = ({ hero }: Props) => {
         </Button>
       </div>
 
-      <CardHeader className="pb-3">
+      <CardHeader className="py-3 z-10 bg-gray-100/50 backdrop-blur-sm relative top-1 group-hover:-top-2.5 transition-all duration-300">
         <div className="flex justify-between items-start">
           <div className="space-y-1">
             <h3 className="font-bold text-lg leading-tight">{hero.alias}</h3>
             <p className="text-sm text-gray-600">{hero.name}</p>
           </div>
           <Badge className="text-xs bg-green-100 text-green-800 border-green-200">
-            {hero.category === 'Hero' ? 'Héroe': 'Villano'}
+            {hero.category === "Hero" ? "Héroe" : "Villano"}
           </Badge>
         </div>
         <Badge variant="outline" className="w-fit text-xs">
@@ -124,7 +132,7 @@ export const HeroGridCard = ({ hero }: Props) => {
               <span className="text-xs font-medium">Durabilidad</span>
             </div>
             <Progress
-              value={hero.durability}
+              value={hero.durability * 10}
               className="h-2"
               activeColor="bg-purple-500"
             />
@@ -135,8 +143,8 @@ export const HeroGridCard = ({ hero }: Props) => {
         <div className="space-y-2">
           <h4 className="font-medium text-sm">Poderes:</h4>
           <div className="flex flex-wrap gap-1">
-            {hero.powers.slice(0, 3).map((power, index) => (
-              <Badge variant="outline" className="text-xs" key={index}>
+            {hero.powers.slice(0, 3).map((power) => (
+              <Badge variant="outline" className="text-xs" key={power}>
                 {power}
               </Badge>
             ))}
