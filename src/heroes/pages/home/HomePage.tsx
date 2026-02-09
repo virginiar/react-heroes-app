@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 import { useSearchParams } from "react-router";
 import { Heart } from "lucide-react";
-import { useQuery } from "@tanstack/react-query";
 
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { CustomJumbotron } from "@/components/custom/CustomJumbotron";
@@ -10,8 +9,8 @@ import { CustomBreadcrumb } from "@/components/custom/CustomBreadcrumb";
 
 import { HeroStats } from "@/heroes/components/HeroStats";
 import { HeroGrid } from "@/heroes/components/HeroGrid";
-import { getHeroesByPageAction } from "@/heroes/actions/get-heroes-by-page.action";
 import { useHeroSummary } from "@/heroes/hooks/useHeroSummary";
+import { usePaginatedHero } from "@/heroes/hooks/usePaginatedHero";
 
 export const HomePage = () => {
   /* const [activeTab, setActiveTab] = useState<
@@ -35,12 +34,13 @@ export const HomePage = () => {
     });
   }, []); */
 
-  const { data: heroesResponse } = useQuery({
+  /* const { data: heroesResponse } = useQuery({
     queryKey: ["heroes", { page, limit }],
     queryFn: () => getHeroesByPageAction(+page, +limit),
     staleTime: 1000 * 60 * 5, // 5 minutos
-  });
+  }); */
   // console.log(data);
+  const { data: heroesResponse } = usePaginatedHero(+page, +limit);
 
   const { data: summary } = useHeroSummary();
 
