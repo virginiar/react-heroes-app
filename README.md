@@ -16,7 +16,8 @@ La obtención de datos HTTP del backend se realiza con [Axios](https://axios-htt
 
 Como gestor de estado asíncrono se utiliza [TanStack Query](https://tanstack.com/query/latest).
 
-Las pruebas se realizan con [Vitest](https://vitest.dev/guide/) y [React Testing Library](https://testing-library.com/docs/react-testing-library/intro).
+Las pruebas se realizan con [Vitest](https://vitest.dev/guide/), [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+y [Axios Mock Adapter](https://www.npmjs.com/package/axios-mock-adapter).
 
 ## Aspectos analizados
 
@@ -47,6 +48,8 @@ Crear archivo `.env` con las variables de entorno indicadas en `.env.template`.
 Iniciar la aplicación con `npm run dev`.
 
 ### Pruebas
+
+Crear archivo `.env.test` con las variables de entorno indicadas en `.env.template`.
 
 Ejecutar las pruebas con `npm run test`.
 
@@ -120,4 +123,9 @@ export default defineConfig({
     globals: true,
   },
 });
+```
+
+Axios Mock Adapter se instala con:
+```bash
+npm install axios-mock-adapter --save-dev
 ```
