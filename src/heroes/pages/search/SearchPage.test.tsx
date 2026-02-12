@@ -1,8 +1,9 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, test, vi } from "vitest";
-import SearchPage from "./SearchPage";
 import { MemoryRouter } from "react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+import SearchPage from "./SearchPage";
 import { searchHeroesAction } from "@/heroes/actions/search-heroes.action";
 import type { Hero } from "@/heroes/interfaces/hero.interface";
 
@@ -11,6 +12,10 @@ const mockSearchHeroesAction = vi.mocked(searchHeroesAction);
 
 vi.mock("@/components/custom/CustomJumbotron", () => ({
   CustomJumbotron: () => <div data-testid="custom-jumbotron"></div>,
+}));
+
+vi.mock("./ui/SearchControls", () => ({
+  SearchControls: () => <div data-testid="search-controls"></div>,
 }));
 
 vi.mock("@/heroes/components/HeroGrid", () => ({
